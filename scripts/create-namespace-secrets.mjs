@@ -178,7 +178,13 @@ function generateValue(envVarName, secretKeyName, secretName) {
     return `client-${randomString(10)}`
   }
 
-  if (key.includes('client_secret') || key.includes('session_secret') || key.includes('auth_token') || key.includes('token') || key.includes('secret')) {
+  if (
+    key.includes('client_secret') ||
+    key.includes('session_secret') ||
+    key.includes('auth_token') ||
+    key.includes('token') ||
+    key.includes('secret')
+  ) {
     return randomString(32)
   }
 
@@ -221,7 +227,9 @@ function applySecret(namespace, secretName, keyValues, dryRun, rotate) {
   const exists = secretExists(namespace, secretName)
 
   if (exists && !rotate) {
-    console.log(dryRun ? `\n[DRY RUN] Would skip existing secret ${secretName}` : `Skipped existing secret ${secretName}`)
+    console.log(
+      dryRun ? `\n[DRY RUN] Would skip existing secret ${secretName}` : `Skipped existing secret ${secretName}`,
+    )
     return 'skipped'
   }
 
@@ -307,5 +315,3 @@ try {
   }
   process.exit(1)
 }
-
-
