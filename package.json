@@ -23,7 +23,8 @@
     "int-test-init:ci": "npx playwright install",
     "clean": "rm -rf dist test_results",
     "rebuild": "npm run clean && npm run setup && npm run build",
-    "setup": "npm ci && hmpps-npm-script-run-allowlist"
+    "setup": "npm ci && hmpps-npm-script-run-allowlist",
+    "bootstrap:namespace-secrets": "node scripts/create-namespace-secrets.mjs"
   },
   "engines": {
     "node": "^24",
